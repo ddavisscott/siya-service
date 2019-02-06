@@ -36,8 +36,52 @@ exports.handler = (event, context, callback) => {
         userList.forEach(userDoc => {
             let user = userDoc.data();
             if (user.role === 'business') {
-                console.log("userId: ", user.userId, ", name: ", user.business_name);
-                businessFields.push(user);
+                let businessField = {
+                    about: "",
+                    additional_notes: "",
+                    business_name: "",
+                    color: "",
+                    email: "",
+                    facebook_url: "",
+                    follower_count: "",
+                    free_credits: "",
+                    instagram_url: "",
+                    publication: "",
+                    replied_submissions: "",
+                    role: "",
+                    the_good: "",
+                    total_submissions: "",
+                    tumblr_url: "",
+                    upload_date: "",
+                    url: "",
+                    userId: "",
+                    website: "",
+                    worth_knowing: ""
+                };
+
+                //Write fields from document directly onto object
+                businessField.about = user.about;
+                businessField.additional_notes = user.additional_notes;
+                businessField.business_name = user.business_name;
+                businessField.color = user.color;
+                businessField.email = user.email;
+                businessField.facebook_url = user.facebook_url;
+                businessField.follower_count = user.follower_count;
+                businessField.free_credits = user.free_credits;
+                businessField.instagram_url = user.instagram_url;
+                businessField.publication = user.publication;
+                businessField.replied_submissions = user.replied_submissions;
+                businessField.role = user.role;
+                businessField.the_good = user.the_good;
+                businessField.total_submissions = user.total_submissions;
+                businessField.tumblr_url = user.tumblr_url;
+                businessField.upload_date = user.upload_date;
+                businessField.url = user.url;
+                businessField.userId = user.userId;
+                businessField.website = user.website;
+                businessField.worth_knowing = user.worth_knowing;
+                //push this object onto array
+                businessFields.push(businessField);
             }
         });
         callback(null, businessFields);
